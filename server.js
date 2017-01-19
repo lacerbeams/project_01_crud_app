@@ -3,7 +3,10 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var app = express();
 var hbs = require('express-handlebars');
+var mongo = require('mongodb').MongoClient;
 var assert = require('assert');
+
+var url = 'mongodb://localhost:27017/project2';
 
 // middleware
 app.use(morgan('dev'));
@@ -21,7 +24,16 @@ app.post('/add', function(req, res) {
     materials: req.body.materials,
     notes: req.body.notes
   }
-  console.log(data);
+
+  mongo.connect(url, function(err, db) {
+    assert.equal(null, err);
+    db.collection('data').insertOne(data, function(err, result) {
+      assert.equal(null, err);
+      console.log('Item inserted');
+      db.close();
+    });
+  });
+
   res.json(data);
 })
 
