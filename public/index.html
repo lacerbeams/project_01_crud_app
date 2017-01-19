@@ -33,6 +33,7 @@
           <th>Notes</th>
         </tr>
         <script type="text/x-handlebars-template">
+        {{# each items}}
         <tr>
           <td> {{project}} </td>
           <td> {{deadline}} </td>
@@ -42,6 +43,8 @@
           <button class="edit">Edit</button><br>
           <button class="delete">Delete</button>
           </td>
+        </tr>
+        {{/each}}
         </script>
         </tr>
       </table>

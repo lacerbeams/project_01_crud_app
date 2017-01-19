@@ -2,13 +2,32 @@ console.log('hello from main.js')
 var $add = $('#add');
 var $submit = $('.submit');
 
-$add.click(function(evt) {
-  window.location.href = '/add.html';
+// adds new data from db to table
+function renderRow() {
+    $.get('/data', function(data) {
+      console.log(data);
+      for (i=data.length-1; i<data.length; i++){
+        $('.details').append('<tr>' + '<td>' + data[i].project + '</td>' + '<td>' + data[i].deadline + '</td>' + '<td>' + data[i].materials + '</td>' + '<td>' + data[i].notes + '</td>' + '<td><button class="edit">Edit</button><br><button class="delete">Delete</button></td></tr>');
+      };
+    });
+  };
+
+// adds data to db
+$submit.click(function(evt) {
+  $.post('/insert', $('#form').serialize());
+  renderRow();
 });
 
-$submit.click(function(evt) {
-  console.log('clicked');
-  $.post('/add', $('#form').serialize(), function(data) {
-    $('.details').append('<tr>' + '<td>' + data.project + '</td>' + '<td>' + data.deadline + '</td>' + '<td>' + data.materials + '</td>' + '<td>' + data.notes + '</td>' + '<td><button class="edit">Edit</button><br><button class="delete">Delete</button></td></tr>');
-  })
+// on page load, it will load existing data to table
+$(document).ready(function() {
+  $.get('/data', function(data) {
+      console.log(data);
+      if (data.length === 0) {
+        console.log('array empty')
+      } else {
+        for (i=0; i<data.length; i++){
+          $('.details').append('<tr>' + '<td>' + data[i].project + '</td>' + '<td>' + data[i].deadline + '</td>' + '<td>' + data[i].materials + '</td>' + '<td>' + data[i].notes + '</td>' + '<td><button class="edit">Edit</button><br><button class="delete">Delete</button></td></tr>');
+        };
+      }
+    });
 });

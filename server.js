@@ -4,7 +4,9 @@ var morgan = require('morgan');
 var app = express();
 var hbs = require('express-handlebars');
 var mongo = require('mongodb').MongoClient;
+var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
+
 
 var url = 'mongodb://localhost:27017/project2';
 
@@ -17,7 +19,7 @@ app.use(bodyParser.json());
 // GET '/' => '/public/index.html'
 app.use(express.static(__dirname + '/public'));
 
-app.post('/add', function(req, res) {
+app.post('/insert', function(req, res) {
   var data = {
     project: req.body.project,
     deadline: req.body.deadline,
@@ -33,9 +35,24 @@ app.post('/add', function(req, res) {
       db.close();
     });
   });
-
-  res.json(data);
+  res.redirect('/');
 })
+
+app.get('/data', function(req, res, next) {
+  var resultArray = [];
+  mongo.connect(url, function(err, db) {
+    assert.equal(null, err);
+    var dataFromDB = db.collection('data').find({})
+    dataFromDB.forEach(function(doc){
+      resultArray.push(doc);
+      console.log(resultArray)
+    },
+    function () {
+      db.close();
+      res.json(resultArray);
+    });
+  });
+});
 
 
 var port = 3000;
