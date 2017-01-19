@@ -54,6 +54,15 @@ app.get('/data', function(req, res, next) {
   });
 });
 
+app.post('/projects/:id/delete', function(req, res) {
+  var id = req.params.id;
+  mongo.connect(url, function(err, db) {
+    db.collection('data').deleteOne({_id: objectId(id)}, function(err, result) {
+      db.close();
+      res.json(result);
+    })
+  })
+})
 
 var port = 3000;
 app.listen(port, function(){

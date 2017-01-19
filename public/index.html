@@ -32,24 +32,23 @@
           <th>Materials</th>
           <th>Notes</th>
         </tr>
-        <script type="text/x-handlebars-template">
-        {{# each items}}
-        <tr>
-          <td> {{project}} </td>
-          <td> {{deadline}} </td>
-          <td> {{materials}} </td>
-          <td> {{notes}} </td>
-          <td>
-          <button class="edit">Edit</button><br>
-          <button class="delete">Delete</button>
-          </td>
-        </tr>
-        {{/each}}
-        </script>
-        </tr>
       </table>
     </div>
   </div>
+  <script type="text/handlebars" id="projects-template">
+    {{#each items}}
+    <tr>
+      <td> {{project}} </td>
+      <td> {{deadline}} </td>
+      <td> {{materials}} </td>
+      <td> {{notes}} </td>
+      <td>
+        <button class="edit">Edit</button><br>
+        <button id="{{_id}}" class="delete">Delete</button>
+      </td>
+    </tr>
+    {{/each}}
+  </script>
   <script src="/main.js"></script>
 </body>
 </html>
