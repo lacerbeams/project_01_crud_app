@@ -1,0 +1,44 @@
+body {
+  background: lavender;
+}
+
+h1 {
+  position: relative;
+  left: 40%;
+}
+
+h4 {
+position: relative;
+left: 38%;
+}
+
+.inputs {
+  position: relative;
+  left: 8%;
+}
+
+.submit {
+  position: relative;
+  left: 40%;
+}
+
+table {
+  position: inline-block;
+  width: 772px;
+  margin: 30px auto;
+  display: block;
+  border: 1px solid black;
+}
+
+th {
+  padding: 10px 55px 10px 55px;
+  border: 1px solid black;
+}
+
+td {
+  border: 1px solid black;
+  padding: 0 10px;
+}
+
+
+

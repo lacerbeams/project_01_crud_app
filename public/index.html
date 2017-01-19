@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Project Tracker</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.1.1.js"
+    integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="content">
+    <h1>Project Tracker</h1>
+    <div class="inputs">
+      <h4>Add a Project:</h4>
+      <form method="post" id="form">
+        Project: <input type="text" name="project">
+        Deadline: <input type="text" name="deadline">
+        Materials: <input type="text" name="materials">
+        Notes: <input type="text" name="notes" val="notes">
+      </form>
+      <br>
+      <button class="submit">Submit</button>
+    </div>
+   <div id="projects">
+      <table class="details">
+        <tr>
+          <th>Project</th>
+          <th>Deadline</th>
+          <th>Materials</th>
+          <th>Notes</th>
+        </tr>
+        <script type="text/x-handlebars-template">
+        <tr>
+          <td> {{project}} </td>
+          <td> {{deadline}} </td>
+          <td> {{materials}} </td>
+          <td> {{notes}} </td>
+          <td>
+          <button class="edit">Edit</button><br>
+          <button class="delete">Delete</button>
+          </td>
+        </script>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <script src="/main.js"></script>
+</body>
+</html>
