@@ -1,5 +1,4 @@
-console.log('hello from main.js')
-var $add = $('#add');
+console.log('hello from main.js');
 var $submit = $('.submit');
 
 function renderTable(evt) {
@@ -24,13 +23,18 @@ function renderTable(evt) {
         var button = $(this);
         var id = button.attr('id');
         console.log(id);
+        // target by id, use key
+        // value > key > text editable
+        // ajax post to '/projects/[id]/update'
+        // updateOne or replaceOne
+
       });
   });
 }
 
 $submit.click(function(evt) {
   $.post('/insert', $('#form').serialize());
-  renderTable();
+  location.reload();
 });
 
 $(document).ready(renderTable);

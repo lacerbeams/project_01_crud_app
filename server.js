@@ -6,6 +6,7 @@ var hbs = require('express-handlebars');
 var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
+var favicon = require('serve-favicon');
 
 
 var url = 'mongodb://localhost:27017/project2';
@@ -18,6 +19,7 @@ app.use(bodyParser.json());
 // Static Routes
 // GET '/' => '/public/index.html'
 app.use(express.static(__dirname + '/public'));
+app.use(favicon(__dirname + '/public/favicon.ico'));
 
 app.post('/insert', function(req, res) {
   var data = {
@@ -63,6 +65,16 @@ app.post('/projects/:id/delete', function(req, res) {
     })
   })
 })
+
+app.post('/projects/:id/update', function(req, res) {
+  var id = req.params.id;
+  mongo.connect(url, function(err, db) {
+    db.collection('data').updateOne({_id: objectId(id)}, function(err, result) {
+      db.close();
+      res.json(result);
+    });
+  });
+});
 
 var port = 3000;
 app.listen(port, function(){

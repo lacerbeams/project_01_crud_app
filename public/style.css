@@ -14,7 +14,7 @@ left: 38%;
 
 .inputs {
   position: relative;
-  left: 8%;
+  left: 6%;
 }
 
 .submit {
@@ -24,7 +24,7 @@ left: 38%;
 
 table {
   position: inline-block;
-  width: 772px;
+  width: 787px;
   margin: 30px auto;
   display: block;
   border: 1px solid black;
