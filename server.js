@@ -9,7 +9,7 @@ var assert = require('assert');
 var favicon = require('serve-favicon');
 
 
-var url = 'mongodb://localhost:27017/project2';
+var url = 'mongodb://heroku_bjdptgr8:iir60hjra95a21tn8vv9r6s6oj@ds117829.mlab.com:17829/heroku_bjdptgr8';
 
 // middleware
 app.use(morgan('dev'));
