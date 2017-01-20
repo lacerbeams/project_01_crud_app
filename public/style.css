@@ -2,30 +2,39 @@ body {
   background: lavender;
 }
 
-h1 {
+.content {
   position: relative;
-  left: 40%;
+  left: 15%;
+  width: 1000px;
+}
+
+h1 {
+  position: absolute;
+  left: 370px;
 }
 
 h4 {
-position: relative;
-left: 38%;
+position: absolute;
+top: 50px;
+left: 430px;
 }
 
 .inputs {
-  position: relative;
-  left: 6%;
+  position: absolute;
+  left: 10px;
+  top: 105px;
 }
 
 .submit {
-  position: relative;
-  left: 40%;
+  position: absolute;
+  left: 435px;
 }
 
 table {
-  position: inline-block;
+  position: absolute;
   width: 787px;
-  margin: 30px auto;
+  top: 200px;
+  left: 100px;
   display: block;
   border: 1px solid black;
 }

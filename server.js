@@ -9,7 +9,7 @@ var assert = require('assert');
 var favicon = require('serve-favicon');
 
 
-var url = 'mongodb://heroku_bjdptgr8:iir60hjra95a21tn8vv9r6s6oj@ds117829.mlab.com:17829/heroku_bjdptgr8';
+var url = process.env.MONGODB_URI || 'mongodb://localhost:27017/data';
 
 // middleware
 app.use(morgan('dev'));
@@ -76,7 +76,7 @@ app.post('/projects/:id/update', function(req, res) {
   });
 });
 
-var port = 3000;
+var port = process.env.PORT || 3000;
 app.listen(port, function(){
   console.log("listening on port " + port);
 });
