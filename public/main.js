@@ -19,23 +19,33 @@ function renderTable(evt) {
           tr.remove();
         });
       });
-      $('.update').click(function(evt) {
-        var button = $(this);
-        var id = button.attr('id');
-        console.log(id);
+      // $('.update').click(function(evt) {
+      //   var button = $(this);
+      //   var id = button.attr('id');
+      //   console.log(id);
+      //   var projectRow = button.closest('tr');
+      //   projectRow.html('<tr><td><input type="text" name="project"></td><td><input type="text" name="deadline"></td><td><input type="text" name="materials"></td><td><input type="text" name="notes"></td><td><button class="submit">Submit</button><button class="delete">Delete</button></td></tr>');
+      //   $.post('/insert', projectRow.html);
+        // $.get('/data', function(items) {
+        //   var chunkOfHtml = $("#projects-template").html();
+        //   var template = Handlebars.compile(chunkOfHtml);
+        //   var html = template({items: items});
+        });
         // target by id, use key
         // value > key > text editable
         // ajax post to '/projects/[id]/update'
         // updateOne or replaceOne
 
-      });
-  });
+      // });
+  // });
 }
+
 
 $submit.click(function(evt) {
   $.post('/insert', $('#form').serialize());
   location.reload();
 });
+
 
 $(document).ready(renderTable);
 
