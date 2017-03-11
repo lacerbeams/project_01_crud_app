@@ -47,7 +47,7 @@ app.get('/data', function(req, res, next) {
     var dataFromDB = db.collection('data').find({})
     dataFromDB.forEach(function(doc){
       resultArray.push(doc);
-      console.log(resultArray)
+      // console.log(resultArray)
     },
     function () {
       db.close();
@@ -66,15 +66,38 @@ app.post('/projects/:id/delete', function(req, res) {
   })
 })
 
+
 app.post('/projects/:id/update', function(req, res) {
   var id = req.params.id;
+  // var data = {
+  //   project: req.body.project,
+  //   deadline: req.body.deadline,
+  //   materials: req.body.materials,
+  //   notes: req.body.notes
+  // }
+  var data = req.body
+  console.log(req.body)
+  var newProject = data.project;
+  var newDeadline = data.deadline;
+  var newMaterials = data.materials;
+  var newNotes = data.notes;
   mongo.connect(url, function(err, db) {
-    db.collection('data').updateOne({_id: objectId(id)}, function(err, result) {
+    db.collection('data').findOneAndUpdate(
+      {_id: objectId(id)}, {
+        $set: {
+          'project': newProject,
+          'deadline': newDeadline,
+          'materials': newMaterials,
+          'notes': newNotes
+        }
+      },
+      function(err, result) {
       db.close();
+      // console.log(result);
       res.json(result);
-    });
-  });
-});
+    })
+  })
+})
 
 var port = process.env.PORT || 3000;
 app.listen(port, function(){

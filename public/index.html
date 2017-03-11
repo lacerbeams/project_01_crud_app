@@ -38,11 +38,11 @@
   </div>
   <script type="text/handlebars" id="projects-template">
     {{#each items}}
-    <tr>
-      <td> {{project}} </td>
-      <td> {{deadline}} </td>
-      <td> {{materials}} </td>
-      <td> {{notes}} </td>
+    <tr id="{{_id}}">
+      <td class="project"> {{project}} </td>
+      <td class="deadline"> {{deadline}} </td>
+      <td class="materials"> {{materials}} </td>
+      <td class="notes"> {{notes}} </td>
       <td>
         <button id="{{_id}}" class="update">Update</button><br>
         <button id="{{_id}}" class="delete">Delete</button>

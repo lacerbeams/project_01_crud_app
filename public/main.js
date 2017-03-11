@@ -19,29 +19,41 @@ function renderTable(evt) {
           tr.remove();
         });
       });
-      // $('.update').click(function(evt) {
-      //   var button = $(this);
-      //   var id = button.attr('id');
-      //   console.log(id);
-      //   var projectRow = button.closest('tr');
-      //   projectRow.html('<tr><td><input type="text" name="project"></td><td><input type="text" name="deadline"></td><td><input type="text" name="materials"></td><td><input type="text" name="notes"></td><td><button class="submit">Submit</button><button class="delete">Delete</button></td></tr>');
-      //   $.post('/insert', projectRow.html);
-        // $.get('/data', function(items) {
-        //   var chunkOfHtml = $("#projects-template").html();
-        //   var template = Handlebars.compile(chunkOfHtml);
-        //   var html = template({items: items});
-        });
-        // target by id, use key
-        // value > key > text editable
-        // ajax post to '/projects/[id]/update'
-        // updateOne or replaceOne
-
-      // });
-  // });
+       $('.update').click(function(evt) {
+        console.log('clicked')
+         var button = $(this);
+         var id = button.attr('id');
+         console.log(id);
+         var projectRow = button.parent().closest('#' + id);
+         console.log(projectRow.children())
+         $(projectRow.children()).eq(0).html(`<input style="width:75%" class="project-input"></input>`)
+         $(projectRow.children()).eq(1).html(`<input style="width:75%" class="deadline-input"></input>`)
+         $(projectRow.children()).eq(2).html(`<input style="width:75%" class="materials-input"></input>`)
+         $(projectRow.children()).eq(3).html(`<input style="width:75%" class="notes-input"></input>`)
+         button.text('Submit');
+         button.click(function(event) {
+          updateProject = $('.project-input').val();
+          updateDeadline = $('.deadline-input').val();
+          updateMaterials = $('.materials-input').val();
+          updateNotes = $('.notes-input').val();
+          // var updateData = `project=${updateProject}&deadline=${updateDeadline}&materials=${updateMaterials}&notes=${updateNotes}`
+          updateData = {
+            project:updateProject,
+            deadline:updateDeadline,
+            materials:updateMaterials,
+            notes:updateNotes
+          }
+          console.log(updateData)
+         $.post(`/projects/${id}/update`, updateData);
+         // location.reload();
+         });
+       });
+   });
 }
 
 
 $submit.click(function(evt) {
+  console.log($('#form').serialize())
   $.post('/insert', $('#form').serialize());
   location.reload();
 });
