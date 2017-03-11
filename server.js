@@ -69,12 +69,6 @@ app.post('/projects/:id/delete', function(req, res) {
 
 app.post('/projects/:id/update', function(req, res) {
   var id = req.params.id;
-  // var data = {
-  //   project: req.body.project,
-  //   deadline: req.body.deadline,
-  //   materials: req.body.materials,
-  //   notes: req.body.notes
-  // }
   var data = req.body
   console.log(req.body)
   var newProject = data.project;

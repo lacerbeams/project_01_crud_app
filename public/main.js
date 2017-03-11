@@ -26,10 +26,6 @@ function renderTable(evt) {
          console.log(id);
          var projectRow = button.parent().closest('#' + id);
          console.log(projectRow)
-         // $(projectRow.children()).eq(0).html(`<input type="text" style="width:75%" class="project-input">`)
-         // $(projectRow.children()).eq(1).html(`<input type="text" style="width:75%" class="deadline-input">`)
-         // $(projectRow.children()).eq(2).html(`<input type="text" style="width:75%" class="materials-input">`)
-         // $(projectRow.children()).eq(3).html(`<input type="text" style="width:75%" class="notes-input">`)
          var projectInput = $(projectRow.children()).eq(0);
          var deadlineInput = $(projectRow.children()).eq(1);
          var materialsInput = $(projectRow.children()).eq(2);
@@ -40,16 +36,10 @@ function renderTable(evt) {
          notesInput.attr('contenteditable', 'true').css('background', 'white');
          button.text('Submit');
          button.click(function(event) {
-          event.preventDefault()
-          // updateProject = $('.project-input').val();
-          // updateDeadline = $('.deadline-input').val();
-          // updateMaterials = $('.materials-input').val();
-          // updateNotes = $('.notes-input').val();
           var updateProject = projectInput.text();
           var updateDeadline = deadlineInput.text();
           var updateMaterials = materialsInput.text();
           var updateNotes = notesInput.text();
-          // var updateData = `project=${updateProject}&deadline=${updateDeadline}&materials=${updateMaterials}&notes=${updateNotes}`
           updateData = {
             project:updateProject,
             deadline:updateDeadline,
