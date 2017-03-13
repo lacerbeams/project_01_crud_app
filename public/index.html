@@ -3,16 +3,19 @@
 <head>
   <title>Project Tracker</title>
   <link rel="stylesheet" href="https://necolas.github.io/normalize.css/5.0.0/normalize.css">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Homemade+Apple" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
   <script
     src="https://code.jquery.com/jquery-3.1.1.js"
     integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
     crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <div class="content">
+  <img src="pencil-ruler-icon.png">
+  <div class="content col-lg-10 col-lg-offset-1">
     <h1>Project Tracker</h1>
     <h4>Add a Project:</h4>
     <div class="inputs">
@@ -23,10 +26,10 @@
         Notes: <input type="text" name="notes" val="notes">
       </form>
       <br>
-      <button class="submit">Submit</button>
+      <button class="submit btn btn-secondary">Submit</button>
     </div>
    <div id="projects">
-      <table class="details">
+      <table class="details table table-bordered">
         <tr>
           <th>Project</th>
           <th>Deadline</th>
@@ -44,8 +47,8 @@
       <td class="materials"> {{materials}} </td>
       <td class="notes"> {{notes}} </td>
       <td>
-        <button type="button" id="{{_id}}" class="update">Update</button><br>
-        <button type="button" id="{{_id}}" class="delete">Delete</button>
+        <button type="button" id="{{_id}}" class="update btn btn-secondary">Update</button><br>
+        <button type="button" id="{{_id}}" class="delete btn btn-secondary">Delete</button>
       </td>
     </tr>
     {{/each}}
